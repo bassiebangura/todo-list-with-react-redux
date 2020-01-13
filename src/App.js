@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Todos from "./components/Todos.js";
-import Goals from "./components/Todos.js";
+import Goals from "./components/Goals.js";
 
   //what Library Code will look like
 
@@ -213,6 +213,7 @@ function App () {
         <ul id='goals'></ul>
       </div>
 	  <Todos />
+	  <Goals />
     </div>
   );
 }
