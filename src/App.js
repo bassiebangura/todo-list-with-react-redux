@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Todos from "./components/Todos.js";
 import Goals from "./components/Goals.js";
+import {createStore} from "redux";
 
   //what Library Code will look like
 
@@ -107,12 +108,12 @@ import Goals from "./components/Goals.js";
 // 	}
 // }
 
-// function app(state = {}, action) {
-// 	return {
-// 		todos: todos(state.todos, action),
-// 		goals: goals(state.goals, action)
-// 	};
-// }
+function app(state = {}, action) {
+	return {
+		// todos: todos(state.todos, action),
+		// goals: goals(state.goals, action)
+	};
+}
 
 // const store = CreateStore(app);
 
@@ -196,8 +197,12 @@ import Goals from "./components/Goals.js";
 
 // document.getElementById('todoBtn').addEventListener('click', addTodo);
 // document.getElementById('goalBtn').addEventListener('click', addGoal);
-
-function App () {
+const store = createStore(app);
+ let App = () => {
+	const store = createStore(app);
+	componentDidMount() {
+		store.subscribe(() => this.forceUpdate())
+	}
   return (
     <div className="App">
        <div>
@@ -212,8 +217,8 @@ function App () {
         <button id='goalBtn'>Add Goal</button>
         <ul id='goals'></ul>
       </div>
-	  <Todos />
-	  <Goals />
+	  <Todos todos={todos} store={store}/>
+	  <Goals goals={goals} store={store} />
     </div>
   );
 }
