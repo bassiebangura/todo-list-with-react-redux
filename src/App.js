@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Todos from "./components/Todos.js";
 import Goals from "./components/Goals.js";
@@ -108,7 +108,7 @@ import {createStore} from "redux";
 // 	}
 // }
 
-function app(state = {}, action) {
+function appReducer(state = {}, action) {
 	return {
 		// todos: todos(state.todos, action),
 		// goals: goals(state.goals, action)
@@ -197,13 +197,16 @@ function app(state = {}, action) {
 
 // document.getElementById('todoBtn').addEventListener('click', addTodo);
 // document.getElementById('goalBtn').addEventListener('click', addGoal);
-const store = createStore(app);
- let App = () => {
-	const store = createStore(app);
+const store = createStore(appReducer);
+ class App extends Component ()  {
+
+	
 	componentDidMount() {
 		store.subscribe(() => this.forceUpdate())
 	}
-  return (
+	render () {
+
+  	return (
     <div className="App">
        <div>
         <h1>Todo List</h1>
@@ -221,6 +224,7 @@ const store = createStore(app);
 	  <Goals goals={goals} store={store} />
     </div>
   );
+	}
 }
 
 
