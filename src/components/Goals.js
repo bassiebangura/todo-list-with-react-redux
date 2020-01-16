@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import List from "./List.js";
 
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
-const TOGGLE_TODO = 'TOGGLE_TODO';
 const ADD_GOAL = 'ADD_GOAL';
 const REMOVE_GOAL = 'REMOVE_GOAL';
+const TOGGLE_GOAL = 'TOGGLE_GOAL';
 
 class Goals extends Component {
     componentDidMount() {
@@ -29,11 +27,17 @@ class Goals extends Component {
 		id
 	};
 }
- addItem = () => {
 
-	let input = document.getElementById('goal');
-	let name = input.value;
-	input.value = '';
+toggleGoalAction = (id) => {
+	return {
+		type: TOGGLE_GOAL,
+		id
+	};
+}
+ addItem = (e) => {
+     e.preventDefault();
+	const name = this.input.value;
+	this.input.value = '';
 
 	this.props.store.dispatch(
 		this.addGoalAction({
@@ -42,8 +46,12 @@ class Goals extends Component {
 		})
 	);
 };
-removeItem = (goal) => {
-        this.props.store.dispatch(this.removeGoalAction(goal.id))
+removeItem = (id) => {
+        this.props.store.dispatch(this.removeGoalAction(id))
+    }
+
+      toggleItem = (id) => {
+        this.props.store.dispatch(this.toggleGoalAction(id))
     }
     render() {
         return (
@@ -54,10 +62,11 @@ removeItem = (goal) => {
                     placeholder="Add Goal"
                     ref={(input) => this.input = input}>
                 </input>
-                <button onclick={this.addItem}>Add Goal</button>
+                <button onClick={this.addItem}>Add Goal</button>
                 <List 
                     items={this.props.goals}
                     remove={this.removeItem}
+                    toggle={this.toggleItem}
                 />
             </div>
         )

@@ -1,16 +1,19 @@
 import React from 'react';
 
 
-function List ({items}) {
+function List ({items, toggle, remove}) {
         return (
         <ul>
            {
                items.map(item => (
                    <li key={item.id}>
-                       <span>
+                       <span
+                            onClick={() => toggle && toggle(item.id)}
+                            style={{textDecoration: item.complete ?  'line-through': 'none'}}
+                        >
                            {item.name}
                        </span>
-                       <button>
+                       <button onClick={() => remove(item.id)}>
                            x
                        </button>
                    </li>

@@ -3,8 +3,7 @@ import List from "./List.js";
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
 const TOGGLE_TODO = 'TOGGLE_TODO';
-const ADD_GOAL = 'ADD_GOAL';
-const REMOVE_GOAL = 'REMOVE_GOAL';
+
 
 class Todos extends Component {
    generateId = () => {
@@ -25,6 +24,12 @@ class Todos extends Component {
 		id
 	};
 }
+toggleTodoAction = (id) => {
+	return {
+		type: TOGGLE_TODO,
+		id
+	};
+}
     addItem = (e) => {
         e.preventDefault();
         const name = this.input.value;
@@ -37,10 +42,13 @@ class Todos extends Component {
     );
     }
 
-    removeItem = (todo) => {
-        this.props.store.dispatch(this.removeTodoAction(todo.id))
+    removeItem = (id) => {
+        this.props.store.dispatch(this.removeTodoAction(id))
     }
 
+    toggleItem = (id) => {
+        this.props.store.dispatch(this.toggleTodoAction(id))
+    }
     render() {
         return (
             <div>
@@ -50,10 +58,11 @@ class Todos extends Component {
                     placeholder="Add Todo"
                     ref={(input) => this.input = input}>
                 </input>
-                <button onclick={this.addItem}>Add Todo</button>
+                <button onClick={this.addItem}>Add Todo</button>
                 <List 
                 items={this.props.todos} 
                 remove={this.removeItem}
+                toggle={this.toggleItem}
                 />
             </div>
         )
