@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import Todos from "./components/Todos.js";
-import Goals from "./components/Goals.js";
+import Todos from "./Todos.js";
+import Goals from "./Goals.js";
 import {createStore} from "redux";
 
   //what Library Code will look like
@@ -197,15 +196,17 @@ function appReducer(state = {}, action) {
 
 // document.getElementById('todoBtn').addEventListener('click', addTodo);
 // document.getElementById('goalBtn').addEventListener('click', addGoal);
-const store = createStore(appReducer);
+
  class App extends Component ()  {
 
 	
 	componentDidMount() {
+    const {store} = this.props;
 		store.subscribe(() => this.forceUpdate())
 	}
 	render () {
-
+    const {store} = this.props;
+    const {todos, goals} = store.getState();
   	return (
     <div className="App">
        <div>

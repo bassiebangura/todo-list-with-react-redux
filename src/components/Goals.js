@@ -2,6 +2,21 @@ import React, {Component} from 'react';
 import List from "./List.js";
 
 class Goals extends Component {
+    componentDidMount() {
+        
+    }
+       generateId = () => {
+	//Helper function to generate unique id
+	return Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
+}
+
+ addGoalAction = (goal) => {
+     
+	return {
+		//type: ADD_GOAL,
+		goal
+	};
+}
  addItem = () => {
     const {store} = this.props
 	let input = document.getElementById('goal');
@@ -9,8 +24,8 @@ class Goals extends Component {
 	input.value = '';
 
 	this.props.store.dispatch(
-		addGoalAction({
-			id: generateId(),
+		this.addGoalAction({
+			id: this.generateId(),
 			name
 		})
 	);
