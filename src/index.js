@@ -11,6 +11,7 @@ const store = createStore(combineReducers({
     todos,
     goals
 }))
+console.log(store)
 render(
   
     <App store={store} />,

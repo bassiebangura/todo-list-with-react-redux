@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import List from "./List.js";
-
+const ADD_TODO = 'ADD_TODO';
+const REMOVE_TODO = 'REMOVE_TODO';
+const TOGGLE_TODO = 'TOGGLE_TODO';
+const ADD_GOAL = 'ADD_GOAL';
+const REMOVE_GOAL = 'REMOVE_GOAL';
 
 class Todos extends Component {
    generateId = () => {
@@ -10,8 +14,15 @@ class Todos extends Component {
 
      addTodoAction = (todo) => {
 	return {
-		// type: ADD_TODO,
+		type: ADD_TODO,
 		todo
+	};
+}
+
+ removeTodoAction = (id) => {
+	return {
+		type: REMOVE_TODO,
+		id
 	};
 }
     addItem = (e) => {
@@ -23,8 +34,13 @@ class Todos extends Component {
 			id: this.generateId(),
 			name
 		})
-	);
+    );
     }
+
+    removeItem = (todo) => {
+        this.props.store.dispatch(this.removeTodoAction(todo.id))
+    }
+
     render() {
         return (
             <div>
@@ -35,7 +51,10 @@ class Todos extends Component {
                     ref={(input) => this.input = input}>
                 </input>
                 <button onclick={this.addItem}>Add Todo</button>
-                <List items={this.props.todos}/>
+                <List 
+                items={this.props.todos} 
+                remove={this.removeItem}
+                />
             </div>
         )
        

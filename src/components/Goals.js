@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import List from "./List.js";
 
+const ADD_TODO = 'ADD_TODO';
+const REMOVE_TODO = 'REMOVE_TODO';
+const TOGGLE_TODO = 'TOGGLE_TODO';
+const ADD_GOAL = 'ADD_GOAL';
+const REMOVE_GOAL = 'REMOVE_GOAL';
+
 class Goals extends Component {
     componentDidMount() {
 
@@ -13,8 +19,14 @@ class Goals extends Component {
  addGoalAction = (goal) => {
      
 	return {
-		//type: ADD_GOAL,
+		type: ADD_GOAL,
 		goal
+	};
+}
+    removeGoalAction = (id) => {
+	return {
+		type: REMOVE_GOAL,
+		id
 	};
 }
  addItem = () => {
@@ -30,6 +42,9 @@ class Goals extends Component {
 		})
 	);
 };
+removeItem = (goal) => {
+        this.props.store.dispatch(this.removeGoalAction(goal.id))
+    }
     render() {
         return (
             <div>
@@ -40,7 +55,10 @@ class Goals extends Component {
                     ref={(input) => this.input = input}>
                 </input>
                 <button onclick={this.addItem}>Add Goal</button>
-                <List items={this.props.goals}/>
+                <List 
+                    items={this.props.goals}
+                    remove={this.removeItem}
+                />
             </div>
         )
        

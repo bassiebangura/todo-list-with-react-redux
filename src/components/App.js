@@ -205,6 +205,7 @@ import {createStore} from "redux";
 		store.subscribe(() => this.forceUpdate())
 	}
 	render () {
+   
     const {store} = this.props;
     const {todos, goals} = store.getState();
   	return (

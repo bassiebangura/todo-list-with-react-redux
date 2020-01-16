@@ -10,6 +10,9 @@ function List ({items}) {
                        <span>
                            {item.name}
                        </span>
+                       <button>
+                           x
+                       </button>
                    </li>
                ))
            }
