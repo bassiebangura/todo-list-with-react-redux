@@ -3,7 +3,7 @@ import List from "./List.js";
 
 class Goals extends Component {
     componentDidMount() {
-        
+
     }
        generateId = () => {
 	//Helper function to generate unique id
@@ -18,7 +18,7 @@ class Goals extends Component {
 	};
 }
  addItem = () => {
-    const {store} = this.props
+
 	let input = document.getElementById('goal');
 	let name = input.value;
 	input.value = '';
@@ -40,7 +40,7 @@ class Goals extends Component {
                     ref={(input) => this.input = input}>
                 </input>
                 <button onclick={this.addItem}>Add Goal</button>
-                <List />
+                <List items={this.props.goals}/>
             </div>
         )
        

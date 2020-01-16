@@ -107,12 +107,12 @@ import {createStore} from "redux";
 // 	}
 // }
 
-function appReducer(state = {}, action) {
-	return {
-		// todos: todos(state.todos, action),
-		// goals: goals(state.goals, action)
-	};
-}
+// function appReducer(state = {}, action) {
+// 	return {
+// 		todos: todos(state.todos, action),
+// 		goals: goals(state.goals, action)
+// 	};
+// }
 
 // const store = CreateStore(app);
 

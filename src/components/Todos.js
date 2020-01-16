@@ -35,7 +35,7 @@ class Todos extends Component {
                     ref={(input) => this.input = input}>
                 </input>
                 <button onclick={this.addItem}>Add Todo</button>
-                <List />
+                <List items={this.props.todos}/>
             </div>
         )
        

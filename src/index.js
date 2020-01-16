@@ -1,13 +1,16 @@
 import React from 'react';
 import './index.css';
 import App from './components/App';
-import {createStore} from "redux";
+import {createStore, combineReducers} from "redux";
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+//import { Provider } from 'react-redux';
 
-import appReducer from './reducers';
+import {todos, goals} from './reducers';
 
-const store = createStore(appReducer)
+const store = createStore(combineReducers({
+    todos,
+    goals
+}))
 render(
   
     <App store={store} />,
