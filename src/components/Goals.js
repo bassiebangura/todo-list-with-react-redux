@@ -6,9 +6,7 @@ const REMOVE_GOAL = 'REMOVE_GOAL';
 const TOGGLE_GOAL = 'TOGGLE_GOAL';
 
 class Goals extends Component {
-    componentDidMount() {
 
-    }
        generateId = () => {
 	//Helper function to generate unique id
 	return Math.random().toString(36).substring(2) + new Date().getTime().toString(36);

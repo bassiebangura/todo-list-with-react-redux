@@ -5,11 +5,7 @@ import App from './components/App';
 import { render } from 'react-dom';
 //import { Provider } from 'react-redux';
 
-//import {todos, goals} from './reducers';
-// const store = createStore(combineReducers({
-//     todos,
-//     goals
-// }))
+
 
 
 render(
