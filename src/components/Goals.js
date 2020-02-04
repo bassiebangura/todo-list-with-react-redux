@@ -49,6 +49,7 @@ removeItem = (id) => {
     }
 
       toggleItem = (id) => {
+          console.log("lets toggle")
         this.props.store.dispatch(this.toggleGoalAction(id))
     }
     render() {

@@ -1,6 +1,7 @@
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
 const TOGGLE_TODO = 'TOGGLE_TODO';
+const TOGGLE_GOAL = 'TOGGLE_GOAL';
 const ADD_GOAL = 'ADD_GOAL';
 const REMOVE_GOAL = 'REMOVE_GOAL';
 
@@ -25,6 +26,10 @@ let  goals = (state = [], action) => {
 			return state.concat([ action.goal ]);
 		case REMOVE_GOAL:
 			return state.filter((goal) => goal.id !== action.id);
+		case TOGGLE_GOAL:
+			return state.map(
+			(goal) => (goal.id !== action.id ? goal : Object.assign({}, goal, { complete: !goal.complete }))
+		);
 		default:
 			return state;
 	}
