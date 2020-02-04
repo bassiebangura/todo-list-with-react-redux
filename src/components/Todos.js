@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import List from "./List.js";
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
-const TOGGLE_TODO = 'TOGGLE_TODO';
+import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO} from "./Constants";
+
 
 
 class Todos extends Component {
